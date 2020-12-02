@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Registration">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="127dp"
+                android:layout_marginTop="50dp"
+                app:srcCompat="@drawable/kids_code_logo"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register"
+                android:textSize="25sp"
+                android:layout_marginBottom="25dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="A parent must create the account"/>
+
+            <EditText
+                android:id="@+id/register_name"
+                android:layout_width="206dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="2dp"
+                android:hint="@string/name"/>
+
+            <EditText
+                android:id="@+id/register_email"
+                android:layout_width="206dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="2dp"
+                android:hint="@string/email"/>
+
+            <EditText
+                android:id="@+id/register_password"
+                android:layout_width="206dp"
+                android:layout_height="40dp"
+                android:password="true"
+                android:layout_marginTop="10dp"
+                android:hint="@string/password"/>
+
+            <EditText
+                android:id="@+id/register_confirm_password"
+                android:layout_width="206dp"
+                android:layout_height="40dp"
+                android:password="true"
+                android:layout_marginTop="10dp"
+                android:hint="@string/confirm_password"/>
+
+            <Button
+                android:id="@+id/button_register"
+                android:layout_width="181dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/register"
+                android:background="#68c2e8"
+                android:onClick="registration"/>
+
+            <ProgressBar
+                android:id="@+id/register_ProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

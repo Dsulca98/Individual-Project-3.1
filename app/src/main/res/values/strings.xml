@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Individual Project 3</string>
+    <string name="email_or_username">Email or Username</string>
+    <string name="password">Password</string>
+    <string name="parent_child">Parent/Child</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="name">Name</string>
+    <string name="register_userName">Username</string>
+    <string name="here"> here</string>
+    <string name="create_account_click">Create account. Click </string>
+    <string name="email">Email</string>
+
+</resources>
