@@ -18,4 +18,9 @@ public class Menu extends AppCompatActivity {
     public void launchMenu1(View view) {
         startActivity(new Intent(Menu.this,Level1Menu.class));
     }
+
+    public void launchMenu2(View view) {
+        startActivity(new Intent(Menu.this,Level2Menu.class));
+    }
+
 }

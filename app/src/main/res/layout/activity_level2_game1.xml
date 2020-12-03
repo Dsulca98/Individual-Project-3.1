@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/map_1"
+    tools:context=".Level2Game1"
     android:orientation="vertical"
-    tools:context=".Level1Game1">
+    android:background="@drawable/map_6">
 
     <ImageView
-        android:id="@+id/lvl1Gm1"
+        android:id="@+id/lvl2Gm1"
         android:layout_width="82dp"
         android:layout_height="52dp"
-        android:src="@drawable/owl1"
+        android:src="@drawable/player2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292" />
+        app:layout_constraintVertical_bias="0.537" />
 
     <Button
         android:id="@+id/rightArrow"
@@ -81,6 +81,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.906" />
+
     <TextView
         android:id="@+id/moveCounter"
         android:layout_width="146dp"
@@ -89,7 +90,7 @@
         android:fontFamily="@font/bebasneue_regular"
         android:paddingStart="15dp"
         android:paddingTop="4dp"
-        android:text="Number of moves Left: 1 "
+        android:text="Number of moves Left: 7 "
         app:layout_constraintBottom_toTopOf="@+id/resetMoves"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.932"
