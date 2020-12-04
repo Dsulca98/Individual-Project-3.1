@@ -6,20 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".Menu"
     android:orientation="vertical"
-    android:background="@drawable/menu1">
+    android:background="@drawable/menu1"
+    android:gravity="center">
 
 
 
     <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_marginVertical="100dp"
-        android:layout_marginHorizontal="130dp"
         android:columnCount="5"
         android:rowCount="2"
-
         >
 
         <Button

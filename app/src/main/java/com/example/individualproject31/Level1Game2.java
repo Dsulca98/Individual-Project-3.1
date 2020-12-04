@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,6 +38,12 @@ public class Level1Game2 extends AppCompatActivity {
     private MediaPlayer mSong;
     private Sounds mError;
 
+    Chronometer chronometer;
+    Clock mClock;
+    long timeScore;
+    private String score;
+    long resetCounter=0;
+
 
 
 
@@ -48,10 +55,7 @@ public class Level1Game2 extends AppCompatActivity {
         mOwl = findViewById(R.id.lvl1Gm2);
         mInput = (Button) findViewById(R.id.arrowInput);
         mCounter=(TextView) findViewById(R.id.moveCounter);
-
         ButterKnife.bind(this);
-
-
         mStart = new StartDragLstnr();
         mEnd = new EndDragLstnr();
         findViewById(R.id.bottomArrow).setOnLongClickListener(mStart);
@@ -64,6 +68,9 @@ public class Level1Game2 extends AppCompatActivity {
         mSong = MediaPlayer.create(Level1Game2.this, R.raw.arcade_puzzler);
         mSong.start();
         mError=new Sounds(Level1Game2.this);
+        /////////
+        chronometer = findViewById(R.id.chronometer);
+        mClock=new Clock(chronometer);
 
 
     }
@@ -77,6 +84,8 @@ public class Level1Game2 extends AppCompatActivity {
 
     public void resetMoves(View view) {
         moveTracker=0;
+
+        resetCounter+=50;
         moveCounter=strMoves+(NUMBER_OF_MOVES-moveTracker);
         mCounter.setText(moveCounter);
 
@@ -176,6 +185,11 @@ public class Level1Game2 extends AppCompatActivity {
     }
 
     private void startAnim() {
+
+
+         mClock.pauseClock(chronometer);
+        setScore();
+
         if (moveTracker == NUMBER_OF_MOVES) {
 
             ObjectAnimator moveOwlRight = ObjectAnimator.ofFloat(mOwl, "translationX", 640);
@@ -206,9 +220,23 @@ public class Level1Game2 extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent = new Intent(Level1Game2.this, CurrentLevelScore.class);
+
+                intent.putExtra("score", score);
                 startActivity(intent);
                 finish();
             }
         }, 3500);
     }
+
+    public void setScore(){
+        timeScore= 20000-mClock.getTimeScore(chronometer);
+        int placeHolder=(int)(timeScore-resetCounter);
+        if(placeHolder<0)
+        {
+            placeHolder=0;
+        }
+        score=""+placeHolder;
+
+    }
+
 }

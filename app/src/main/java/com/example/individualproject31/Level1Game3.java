@@ -19,6 +19,7 @@ import android.view.DragEvent;
 import android.view.View;
 
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +37,12 @@ public class Level1Game3 extends AppCompatActivity {
     private MediaPlayer mSong;
     private TextView mCounter;
     private Sounds mError;
+
+    Chronometer chronometer;
+    Clock mClock;
+    long timeScore;
+    private String score;
+    long resetCounter=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +68,9 @@ public class Level1Game3 extends AppCompatActivity {
         mSong.start();
         mError=new Sounds(Level1Game3.this);
 
+        chronometer = findViewById(R.id.chronometer);
+        mClock=new Clock(chronometer);
+
 
     }
 
@@ -72,6 +82,7 @@ public class Level1Game3 extends AppCompatActivity {
 
     public void resetMoves(View view) {
         moveTracker=0;
+        resetCounter+=50;
         moveCounter=strMoves+(NUMBER_OF_MOVES-moveTracker);
         mCounter.setText(moveCounter);
 
@@ -181,6 +192,8 @@ public class Level1Game3 extends AppCompatActivity {
     }
 
     private void startAnim() {
+        mClock.pauseClock(chronometer);
+        setScore();
         if (moveTracker == NUMBER_OF_MOVES) {
 
             ObjectAnimator move1 = ObjectAnimator.ofFloat(mOwl, "translationX", 220);
@@ -228,9 +241,22 @@ public class Level1Game3 extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent = new Intent(Level1Game3.this, CurrentLevelScore.class);
+                intent.putExtra("score", score);
                 startActivity(intent);
                 finish();
             }
         }, 6000);
+    }
+
+
+    public void setScore(){
+        timeScore= 30000-mClock.getTimeScore(chronometer);
+        int placeHolder=(int)(timeScore-resetCounter);
+        if(placeHolder<0)
+        {
+            placeHolder=0;
+        }
+        score=""+placeHolder;
+
     }
 }

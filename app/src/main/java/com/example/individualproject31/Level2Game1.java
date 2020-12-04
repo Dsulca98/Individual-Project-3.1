@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +37,11 @@ public class Level2Game1 extends AppCompatActivity {
     Button mInput;
     private MediaPlayer mSong;
     private Sounds mError;
+    Chronometer chronometer;
+    Clock mClock;
+    long timeScore;
+    private String score;
+    long resetCounter=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,9 @@ public class Level2Game1 extends AppCompatActivity {
         mSong.start();
         mError=new Sounds(Level2Game1.this);
 
+        chronometer = findViewById(R.id.chronometer);
+        mClock=new Clock(chronometer);
+
 
     }
 
@@ -73,6 +82,7 @@ public class Level2Game1 extends AppCompatActivity {
 
     public void resetMoves(View view) {
         moveTracker=0;
+        resetCounter+=50;
         moveCounter=strMoves+(NUMBER_OF_MOVES-moveTracker);
         mCounter.setText(moveCounter);
 
@@ -89,6 +99,7 @@ public class Level2Game1 extends AppCompatActivity {
         else {
             mSong.start();
         }
+
 
     }
 
@@ -180,40 +191,67 @@ public class Level2Game1 extends AppCompatActivity {
     }
 
     private void startAnim() {
-        if (moveTracker == NUMBER_OF_MOVES) {
+        mClock.pauseClock(chronometer);
+        setScore();
 
-            ObjectAnimator moveOwlRight = ObjectAnimator.ofFloat(mOwl, "translationX", 640);
-            moveOwlRight.setDuration(1000);
 
-            ObjectAnimator moveOwlDown = ObjectAnimator.ofFloat(mOwl, "translationY", 300);
-            moveOwlDown.setDuration(1000);
+            ObjectAnimator move1 = ObjectAnimator.ofFloat(mOwl, "translationX", 260);
+            move1.setDuration(800);
 
-            ObjectAnimator moveOwlRight2 = ObjectAnimator.ofFloat(mOwl, "translationX", 1600);
-            moveOwlRight2.setDuration(1000);
-            ObjectAnimator jumpUp = ObjectAnimator.ofFloat(mOwl, "translationY", 250);
+            ObjectAnimator move2 = ObjectAnimator.ofFloat(mOwl, "translationY", -100);
+            move2.setDuration(800);
+
+            ObjectAnimator move3 = ObjectAnimator.ofFloat(mOwl, "translationX", 380);
+            move3.setDuration(800);
+            ObjectAnimator move4 = ObjectAnimator.ofFloat(mOwl, "translationY", -230);
+            move4.setDuration(800);
+            ObjectAnimator move5 = ObjectAnimator.ofFloat(mOwl, "translationX", 850);
+            move5.setDuration(800);
+            ObjectAnimator move6 = ObjectAnimator.ofFloat(mOwl, "translationY", -20);
+            move6.setDuration(800);
+            ObjectAnimator move7 = ObjectAnimator.ofFloat(mOwl, "translationX", 1600);
+            move7.setDuration(800);
+            ObjectAnimator jumpUp = ObjectAnimator.ofFloat(mOwl, "translationY", -70);
             jumpUp.setDuration(200);
-            ObjectAnimator jumpDown = ObjectAnimator.ofFloat(mOwl, "translationY", 300);
+            ObjectAnimator jumpDown = ObjectAnimator.ofFloat(mOwl, "translationY", -20);
             jumpDown.setDuration(200);
 
 
 
             AnimatorSet animate=new AnimatorSet();
-            animate.play(moveOwlRight);
-            animate.play(moveOwlDown).after(moveOwlRight);
-            animate.play(moveOwlRight2).after(moveOwlDown);
-            animate.play(jumpUp).after(moveOwlRight2);
+            animate.play(move1);
+            animate.play(move2).after(move1);
+            animate.play(move3).after(move2);
+            animate.play(move4).after(move3);
+            animate.play(move5).after(move4);
+            animate.play(move6).after(move5);
+            animate.play(move7).after(move6);
+            animate.play(jumpUp).after(move7);
             animate.play(jumpDown).after(jumpUp);
             animate.start();
 
-        }
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(Level2Game1.this, CurrentLevelScore.class);
+                intent.putExtra("score", score);
                 startActivity(intent);
                 finish();
             }
-        }, 3500);
+        }, 6000);
+    }
+
+
+    public void setScore(){
+        timeScore= 20000-mClock.getTimeScore(chronometer);
+        int placeHolder=(int)(timeScore-resetCounter);
+        if(placeHolder<0)
+        {
+            placeHolder=0;
+        }
+        score=""+placeHolder;
+
     }
 }
 
