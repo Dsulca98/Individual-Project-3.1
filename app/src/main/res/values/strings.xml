@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Individual Project 3</string>
+    <string name="app_name">KidsCode</string>
     <string name="email_or_username">Email or Username</string>
     <string name="password">Password</string>
     <string name="parent_child">Parent/Child</string>
