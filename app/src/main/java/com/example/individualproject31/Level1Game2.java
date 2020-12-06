@@ -177,7 +177,6 @@ public class Level1Game2 extends AppCompatActivity {
                 }
                 break;
             default:
-
                 return false;
         }
 

@@ -19,6 +19,7 @@ import java.util.TimerTask;
 
 
 public class Clock {
+    //constructor for the clock, this way every game can reference this class to have a clock
     public Clock(Chronometer chronometer){
         chronometer.setFormat("Time: %s");
         chronometer.setBase(SystemClock.elapsedRealtime());
@@ -26,14 +27,11 @@ public class Clock {
     }
     public void pauseClock(Chronometer chronometer)
     {
-
         chronometer.stop();
-
     }
+    //this method will return the time in milliseconds which will be the score given to the user
     public long getTimeScore(Chronometer chronometer){
-
         return  SystemClock.elapsedRealtime()-chronometer.getBase();
-
     }
 
 

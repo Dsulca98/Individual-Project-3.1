@@ -8,7 +8,7 @@ public class Sounds {
 
     private SoundPool sound;
     private int error;
-
+//the constructor will always create a new sound to eb retrieved
     public Sounds(Context context){
         sound= new SoundPool(1, AudioManager.STREAM_MUSIC,0);
         error=sound.load(context, R.raw.error,1);

@@ -13,7 +13,7 @@ public class Level1Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level1_menu);
     }
-
+//menu for level 1, will launch games
     public void launchGame1(View view) {
         startActivity(new Intent(Level1Menu.this,Level1Game1.class));
         finish();

@@ -14,13 +14,16 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
     }
 
-
+//buttons will open new activities, the specific level menus
     public void launchMenu1(View view) {
         startActivity(new Intent(Menu.this,Level1Menu.class));
+        finish();
     }
 
     public void launchMenu2(View view) {
         startActivity(new Intent(Menu.this,Level2Menu.class));
+        finish();
     }
+
 
 }

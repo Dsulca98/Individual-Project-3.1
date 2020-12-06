@@ -19,15 +19,17 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="127dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/kids_code_logo"
                 />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:text="@string/login"
-                android:textSize="25sp"
-                android:layout_marginBottom="25dp"/>
+                android:textSize="25sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 public class Registration extends AppCompatActivity {
 
+    DatabaseManipulation newData;
     DatabaseHelper db;
     String newName,newEmail,newPassWord,confirmPassword,message;
     EditText mName,mEmail,mPassword,mConfirmPassword;
@@ -25,30 +26,31 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
-//        ButterKnife.bind(this);
-
+        //opens up and instantiates the database class
+        db = new DatabaseHelper(this);
+        newData = new DatabaseManipulation(this);
+        newData.open();
+        //links up the views
         mName=(EditText) findViewById(R.id.register_name);
         mEmail=(EditText) findViewById(R.id.register_email);
         mPassword=(EditText) findViewById(R.id.register_password);
         mConfirmPassword=(EditText) findViewById(R.id.register_confirm_password);
 
-        db = new DatabaseHelper(this);
     }
     public void registration(View view) {
-
+        //converts to string the value in the edittexts
         newName=mName.getText().toString();
         newEmail=mEmail.getText().toString();
         newPassWord=mPassword.getText().toString();
         confirmPassword=mConfirmPassword.getText().toString();
-
+        //if statement will check whether to launch new activity or not
+        //data validation
         if(validateData()){
             Toast.makeText(this,message,Toast.LENGTH_LONG).show();
         }
         else {
-//            long val = db.addUser(newEmail,newPassWord,newName);
-            long val= db.addUser(newEmail,newPassWord);
-
+            newData.createRegistry(newEmail, newPassWord);
+            newData.close();
             startActivity(new Intent(Registration.this,KidRegistration.class));
         }
     }

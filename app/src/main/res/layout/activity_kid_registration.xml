@@ -18,19 +18,20 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="127dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="15dp"
             app:srcCompat="@drawable/kids_code_logo"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register"
             android:textSize="25sp"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="15dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="Enter kid information"/>
+            android:text="Enter kid information"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/register_kid_name"
@@ -45,7 +46,8 @@
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:paddingLeft="2dp"
-            android:hint="Kid's password"/>
+            android:hint="Kid's password"
+            android:password="true"/>
 
         <Button
             android:id="@+id/button_register"
